@@ -124,6 +124,84 @@ public class Program {
 		// input id for edit
 		// if found please input new data for product
 		// validate when input
+		
+		String name;
+		double price;
+		int qty;
+		
+		Scanner cin = new Scanner(System.in);
+		int id;
+		while (true) {
+			try {
+				System.out.print("Enter ID:");
+				id = cin.nextInt();
+				if (id > 0) {
+					break;
+				} else {
+					System.out.print("ID must be integer and greater than 0");
+					cin.nextLine();
+				}
+			} catch (Exception e) {
+				System.out.print("ID must be number");
+				cin.nextLine();
+			}
+		}
+		
+		for(int i =0;i<products.size();i++) {
+			if(products.get(i).getId()==id) {
+				while (true) {
+					System.out.print("Enter name:");
+					name = cin.nextLine();
+					if (name != null && name.trim() != "")
+						break;
+					else {
+						System.out.print("name must be not null or empty");
+						cin.nextLine();
+					}
+				}
+
+				while (true) {
+					try {
+						System.out.print("Enter price:");
+						price = cin.nextDouble();
+						if (price > 0) {
+							break;
+						} else {
+							System.out.println("Price must be greater than 0");
+							cin.nextLine();
+						}
+
+					} catch (Exception e) {
+						System.out.println("Price must be number");
+						cin.nextLine();
+					}
+				}
+
+				while (true) {
+					try {
+						System.out.print("qty price:");
+						qty = cin.nextInt();
+						if (qty > 0) {
+							break;
+						} else {
+							System.out.print("Price must be integer and greater than 0");
+							cin.nextLine();
+						}
+					} catch (Exception e) {
+						System.out.print("Price must be number");
+						cin.nextLine();
+					}
+				}
+				cin.nextLine();
+				products.get(i).setName(name);
+				products.get(i).setPrice(price);
+				products.get(i).setQty(qty);
+				
+				System.out.print("Product update successfully");
+			}else {
+				System.out.println("Product not found");
+			}
+		}
 
 	}
 
@@ -162,6 +240,7 @@ public class Program {
 
 				if(op.toUpperCase().equals("YES")) {
 					products.remove(products.get(i));
+					System.out.print("Product delete successfully");
 				}
 				break;
 			}else {
