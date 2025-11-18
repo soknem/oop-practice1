@@ -115,6 +115,7 @@ public class Program {
 
 			Product product = new Product(id, name, price, qty);
 			products.add(product);
+			id++;
 		}
 
 	}
@@ -130,7 +131,43 @@ public class Program {
 		// please input id to delete
 		// if sound must show message confirm Yes/No to delete
 		//
+		Scanner cin = new Scanner(System.in);
+		int id;
+		while (true) {
+			try {
+				System.out.print("Enter ID:");
+				id = cin.nextInt();
+				if (id > 0) {
+					break;
+				} else {
+					System.out.print("ID must be integer and greater than 0");
+					cin.nextLine();
+				}
+			} catch (Exception e) {
+				System.out.print("ID must be number");
+				cin.nextLine();
+			}
+		}
+		
+		for(int i =0;i<products.size();i++) {
+			if(products.get(i).getId()==id) {
+				String op =null;
+				while(true) {
+					System.out.print("Enter Yes/No to delete or not:");
+					op=cin.nextLine();
+					if(op.toUpperCase().equals("YES")||op.toUpperCase().equals("NO")) {
+						break;
+					}
+					cin.nextLine();				}
 
+				if(op.toUpperCase().equals("YES")) {
+					products.remove(products.get(i));
+				}
+				break;
+			}else {
+				System.out.println("Product not found");
+			}
+		}
 	}
 
 	public static void showProduct(List<Product> products) {
