@@ -291,9 +291,9 @@ public class Program {
             return;
         }
         System.out.println("-----------------------------");
-        System.out.print(pad(String.valueOf("ID"), 5, ' ', true));
-        System.out.print(pad(String.valueOf("Name"), 20, ' ', true));
-        System.out.print(pad(String.valueOf("Price"), 8, ' ', true));
+        System.out.print(pad("ID", 5, ' ', true));
+        System.out.print(pad("Name", 20, ' ', true));
+        System.out.print(pad("Price", 8, ' ', true));
         System.out.println(pad(String.valueOf("Qty"), 8, ' ', true));
         for (Product product : products) {
             String id = pad(String.valueOf(product.getId()), 5, ' ', true);
