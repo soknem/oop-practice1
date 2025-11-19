@@ -10,11 +10,11 @@ public class MainProduct {
 	
 		List<Product> products = new ArrayList<>();
 		Scanner cin = new Scanner(System.in);
-		System.out.println("OOP Practice");
+		System.out.print("\n=====>> OOP Practice <<=====");
 		
 		while(true) {
 			
-			System.out.println("\n\n");
+			System.out.println("\n");
 			int choose = Program.showMenu();
 			
 			switch(choose) {
