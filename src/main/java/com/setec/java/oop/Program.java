@@ -77,7 +77,7 @@ public class Program {
                 if (name != null && name.trim() != "")
                     break;
                 else {
-                    System.out.print("name must be not null or empty");
+                    System.out.println("name must be not null or empty");
                     cin.nextLine();
                 }
             }
@@ -106,11 +106,11 @@ public class Program {
                     if (qty > 0) {
                         break;
                     } else {
-                        System.out.print("Price must be integer and greater than 0");
+                        System.out.println("Price must be integer and greater than 0");
                         cin.nextLine();
                     }
                 } catch (Exception e) {
-                    System.out.print("Price must be number");
+                    System.out.println("Price must be number");
                     cin.nextLine();
                 }
             }
@@ -120,6 +120,7 @@ public class Program {
             products.add(product);
             id++;
         }
+        System.out.println("Products add successfully");
 
     }
 
@@ -145,11 +146,11 @@ public class Program {
                 if (id > 0) {
                     break;
                 } else {
-                    System.out.print("ID must be integer and greater than 0");
+                    System.out.println("ID must be integer and greater than 0");
                     cin.nextLine();
                 }
             } catch (Exception e) {
-                System.out.print("ID must be number");
+                System.out.println("ID must be number");
                 cin.nextLine();
             }
         }
@@ -162,7 +163,7 @@ public class Program {
                     if (name != null && name.trim() != "")
                         break;
                     else {
-                        System.out.print("name must be not null or empty");
+                        System.out.println("name must be not null or empty");
                         cin.nextLine();
                     }
                 }
@@ -191,11 +192,11 @@ public class Program {
                         if (qty > 0) {
                             break;
                         } else {
-                            System.out.print("Price must be integer and greater than 0");
+                            System.out.println("Price must be integer and greater than 0");
                             cin.nextLine();
                         }
                     } catch (Exception e) {
-                        System.out.print("Price must be number");
+                        System.out.println("Price must be number");
                         cin.nextLine();
                     }
                 }
@@ -229,11 +230,11 @@ public class Program {
                 if (id > 0) {
                     break;
                 } else {
-                    System.out.print("ID must be integer and greater than 0");
+                    System.out.println("ID must be integer and greater than 0");
                     cin.nextLine();
                 }
             } catch (Exception e) {
-                System.out.print("ID must be number");
+                System.out.println("ID must be number");
                 cin.nextLine();
             }
         }
@@ -241,24 +242,27 @@ public class Program {
         for (int i = 0; i < products.size(); i++) {
             if (products.get(i).getId() == id) {
                 String op = null;
+                cin.nextLine();
                 while (true) {
                     System.out.print("Enter Yes/No to delete or not:");
                     op = cin.nextLine();
-                    if (op.toUpperCase().equals("YES") || op.toUpperCase().equals("NO")) {
+                    if (op.equalsIgnoreCase("YES") || op.equalsIgnoreCase("NO")) {
                         break;
                     }
-                    cin.nextLine();
                 }
 
                 if (op.toUpperCase().equals("YES")) {
                     products.remove(products.get(i));
                     System.out.print("Product delete successfully");
+                    return;
                 }
-                break;
-            } else {
-                System.out.println("Product not found");
+                System.out.print("Cancelled delete product");
+                return;
+
             }
         }
+        System.out.println("Product not found");
+
     }
 
     public static void showProduct(List<Product> products) {
