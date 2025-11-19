@@ -294,15 +294,15 @@ public class Program {
             return;
         }
         System.out.println("-----------------------------");
-        System.out.print(pad(String.valueOf("ID"), 4, ' ', true));
+        System.out.print(pad(String.valueOf("ID"), 5, ' ', true));
         System.out.print(pad(String.valueOf("Name"), 20, ' ', true));
-        System.out.print(pad(String.valueOf("Price"), 6, ' ', true));
-        System.out.println(pad(String.valueOf("Qty"), 6, ' ', true));
+        System.out.print(pad(String.valueOf("Price"), 8, ' ', true));
+        System.out.println(pad(String.valueOf("Qty"), 8, ' ', true));
         for (Product product : products) {
-            String id = pad(String.valueOf(product.getId()), 4, ' ', true);
+            String id = pad(String.valueOf(product.getId()), 5, ' ', true);
             String name = pad(product.getName(), 20, ' ', true);
-            String price = pad(String.valueOf(product.getPrice()), 6, ' ', true);
-            String qty = pad(String.valueOf(product.getQty()), 6, ' ', true);
+            String price = pad(String.valueOf(product.getPrice()), 8, ' ', true);
+            String qty = pad(String.valueOf(product.getQty()), 8, ' ', true);
 
             System.out.println(id + name + price + qty);
         }
