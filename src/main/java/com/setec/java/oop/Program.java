@@ -17,21 +17,18 @@ public class Program {
 
     public static String pad(String str, int length, char paddingChar, boolean padRight) {
         if (str == null) {
-            str = ""; // Handle null input safely
+            str = "";
         }
         if (str.length() >= length) {
-            return str; // No padding needed, or string is too long
+            return str;
         }
 
         int paddingLength = length - str.length();
-        // Create the padding string (e.g., "   " or "***")
         String padding = String.valueOf(paddingChar).repeat(paddingLength);
 
         if (padRight) {
-            // Pad Right: "Hello   "
             return str + padding;
         } else {
-            // Pad Left: "   Hello"
             return padding + str;
         }
     }
