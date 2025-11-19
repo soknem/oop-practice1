@@ -15,6 +15,27 @@ public class Program {
         return 0;
     }
 
+    public static String pad(String str, int length, char paddingChar, boolean padRight) {
+        if (str == null) {
+            str = ""; // Handle null input safely
+        }
+        if (str.length() >= length) {
+            return str; // No padding needed, or string is too long
+        }
+
+        int paddingLength = length - str.length();
+        // Create the padding string (e.g., "   " or "***")
+        String padding = String.valueOf(paddingChar).repeat(paddingLength);
+
+        if (padRight) {
+            // Pad Right: "Hello   "
+            return str + padding;
+        } else {
+            // Pad Left: "   Hello"
+            return padding + str;
+        }
+    }
+
     public static int showMenu() {
         Scanner cin = new Scanner(System.in);
         System.out.println("1.Add new products");
@@ -155,8 +176,10 @@ public class Program {
             }
         }
 
+        cin.nextLine();
         for (int i = 0; i < products.size(); i++) {
             if (products.get(i).getId() == id) {
+                System.out.println("Please enter new data for product[" + products.get(i).getId() + "]:");
                 while (true) {
                     System.out.print("Enter name:");
                     name = cin.nextLine();
@@ -187,7 +210,7 @@ public class Program {
 
                 while (true) {
                     try {
-                        System.out.print("qty price:");
+                        System.out.print("Enter qty:");
                         qty = cin.nextInt();
                         if (qty > 0) {
                             break;
@@ -206,10 +229,10 @@ public class Program {
                 products.get(i).setQty(qty);
 
                 System.out.print("Product update successfully");
-            } else {
-                System.out.println("Product not found");
+                return;
             }
         }
+        System.out.println("Product not found");
 
     }
 
@@ -270,13 +293,19 @@ public class Program {
             System.out.println("No products to display");
             return;
         }
-        System.out.println("-----------------------------\n");
-        // Show all products and row and columns
-        System.out.println("ID\tName\tPrice\tQty");
+        System.out.println("-----------------------------");
+        System.out.print(pad(String.valueOf("ID"), 4, ' ', true));
+        System.out.print(pad(String.valueOf("Name"), 20, ' ', true));
+        System.out.print(pad(String.valueOf("Price"), 6, ' ', true));
+        System.out.println(pad(String.valueOf("Qty"), 6, ' ', true));
         for (Product product : products) {
-            System.out.println(product.getId() + "\t" + product.getName() + "\t" + product.getPrice() + "\t" + product.getQty());
-        }
+            String id = pad(String.valueOf(product.getId()), 4, ' ', true);
+            String name = pad(product.getName(), 20, ' ', true);
+            String price = pad(String.valueOf(product.getPrice()), 6, ' ', true);
+            String qty = pad(String.valueOf(product.getQty()), 6, ' ', true);
 
+            System.out.println(id + name + price + qty);
+        }
     }
 
 }
